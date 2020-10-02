@@ -17,7 +17,6 @@ It also implements 3 custom-created tasks:
 To rebuild this image (for instance, if you need a new vsphere pack version), run the following command.  It is currently configured to build while on SEI VPN using:
 
 ```
-cd st2packs-dockerfiles
 docker build --build-arg PACKS="vsphere=0.11.1" -t cmusei/st2packs:<TAG> st2packs-image
 ```
 
@@ -32,7 +31,6 @@ Once built, ensure this image is pushed to the `cmusei` organization in Dockerhu
 Because of Python version dependency issues in the 3.3dev version of Stackstorm, this repo rebuilds the "builder" version of the `st2packs` image using version `3.1.0`.  If you wish to change this version in the future, edit the `st2packs-builder` Dockerfile and change the version, and then run the following commands to update the `st2packs` image in Docker Hub:
 
 ```
-cd st2packs-dockerfiles
 docker build -t cmusei/st2packs:builder st2packs-builder
 ```
 Once built, ensure this image is pushed to the `cmusei` organization in Dockerhub.
