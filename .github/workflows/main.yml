@@ -48,7 +48,7 @@ jobs:
         context: .
         file: st2packs-image/Dockerfile
         build-args: |
-          PACKS="vsphere=0.15.1"
+          PACKS=vsphere=0.15.1
         push: ${{ startsWith(github.ref, 'refs/tags/') }}
         tags: ${{ steps.prep.outputs.tags }}
         labels: |
