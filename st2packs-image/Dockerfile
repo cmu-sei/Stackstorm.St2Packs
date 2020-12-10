@@ -1,4 +1,4 @@
-FROM cmusei/st2packs:builder AS builder
+FROM cmusei/st2packs:builder-3.3dev AS builder
 
 # Install custom packs
 RUN /opt/stackstorm/st2/bin/st2-pack-install ${PACKS}
