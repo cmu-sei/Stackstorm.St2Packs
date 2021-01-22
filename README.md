@@ -34,5 +34,3 @@ Because of Python version dependency issues in the 3.3dev version of Stackstorm,
 docker build -t cmusei/st2packs:builder st2packs-builder
 ```
 Once built, ensure this image is pushed to the `cmusei` organization in Dockerhub.
-
-
