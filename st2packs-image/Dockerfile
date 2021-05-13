@@ -1,9 +1,9 @@
 FROM cmusei/st2packs:builder-3.3dev AS builder
 
+RUN apt update && apt install gcc
+
 # Install custom packs
 RUN /opt/stackstorm/st2/bin/st2-pack-install ${PACKS}
-
-COPY actions /opt/stackstorm/packs/vsphere/actions
 
 ###########################
 # Minimize the image size. Start with alpine:3.8,
