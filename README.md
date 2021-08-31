@@ -17,7 +17,7 @@ It also implements 3 custom-created tasks:
 To rebuild this image (for instance, if you need a new vsphere pack version), run the following command.  It is currently configured to build while on SEI VPN using:
 
 ```
-docker build --build-arg PACKS="vsphere=0.11.1" -t cmusei/st2packs:<TAG> st2packs-image
+docker build --build-arg PACKS="vsphere=1.1.0" -t cmusei/st2packs:<TAG> st2packs-image
 ```
 
 All that needs to be done is to update the `<TAG>` to whatever docker image tag you want to use -- in this case, the version of the vsphere plugin is recommended.
