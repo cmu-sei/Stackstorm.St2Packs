@@ -52,8 +52,8 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v2
       with:
-        context: .
-        file: st2packs-image/Dockerfile
+        context: st2packs-image
+        file: Dockerfile
         build-args: |
           PACKS="vsphere=1.1.0 email=2.0.2 azure=1.0.0"
         push: ${{ steps.prep.outputs.push }}
