@@ -1,5 +1,7 @@
 FROM cmusei/st2packs:builder AS builder
 
+RUN apt update && apt install gcc
+
 # Install custom packs
 RUN /opt/stackstorm/st2/bin/st2-pack-install ${PACKS}
 
