@@ -34,7 +34,7 @@ class StartProgramInGuest(GuestAction):
             cmdargs = cmdargs + ' 1>stdout 2>stderr'
         if not workdir:
             workdir = self.guest_file_manager.CreateTemporaryDirectoryInGuest(
-            self.vm, self.guest_credentials, "crucible_", "_dir")
+                self.vm, self.guest_credentials, "crucible_", "_dir")
 
         cmdspec = vim.vm.guest.ProcessManager.ProgramSpec(
             arguments=cmdargs,
@@ -67,6 +67,17 @@ class StartProgramInGuest(GuestAction):
             other_path = temp_path
         dl_url = self.guest_file_manager.InitiateFileTransferFromGuest(
             self.vm, self.guest_credentials, guestFilePath=output_path)
+
+        # change url to proxy
+        esxi_proxy = os.environ.get('esxi_proxy')
+        if esxi_proxy is not None:
+            hostname_start = dl_url.url.find('//')
+            hostname_end = dl_url.url.find('/', hostname_start+2)
+
+            dl_url.url = esxi_proxy + '/' + \
+                dl_url.url[hostname_end+1:] + "&vmhost=" + \
+                dl_url.url[hostname_start+2:hostname_end]
+
         response = requests.get(dl_url.url, verify=False)
 
         self.guest_file_manager.DeleteDirectoryInGuest(
