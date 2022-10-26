@@ -1,4 +1,4 @@
-FROM cmusei/st2packs:builder AS builder
+FROM cmusei/st2packs:builder-v3.7 AS builder
 
 RUN apt-get update && apt-get install -y gcc
 

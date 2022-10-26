@@ -20,6 +20,13 @@ To rebuild this image (for instance, if you need a new vsphere pack version), ru
 docker build --build-arg PACKS="vsphere=1.1.0 email=2.0.2 azure=1.0.0" -t cmusei/st2packs:<TAG> st2packs-image
 ```
 
+When upgrading the version of st2, you will first need to update the st2packs-builder Dockerfile and then rebuild the image and then update the st2packs-image Dockerfile to use the new builder:
+
+```
+docker build -t cmusei/st2packs:builder-v3.7 st2packs-builder
+docker build --build-arg PACKS="vsphere=1.1.0 email=2.0.3 azure=1.0.0" -t cmusei/st2packs:v3.7 st2packs-image
+```
+
 All that needs to be done is to update the `<TAG>` to whatever docker image tag you want to use -- in this case, the version of the vsphere plugin is recommended.
 
 ## Push to Dockerhub
