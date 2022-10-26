@@ -54,7 +54,7 @@ jobs:
       with:
         context: st2packs-image
         build-args: |
-          PACKS=vsphere=1.1.0 email=2.0.2 azure=1.0.0
+          PACKS=vsphere=1.1.0 email=2.0.3 azure=1.0.0
         push: ${{ steps.prep.outputs.push }}
         pull: true
         tags: ${{ steps.prep.outputs.tags }}
